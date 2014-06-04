@@ -1,0 +1,213 @@
+﻿<Window x:Class="dllusage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DLLUsage" Height="599" Width="1186" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="ToolTip" x:Key="InternalToolTipStyle">
+            <Setter Property="MaxWidth" Value="400" />
+        </Style>
+    </Window.Resources>
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="110"/>
+
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="*"/>
+                
+                <ColumnDefinition Width="32"/>
+                <ColumnDefinition Width="32"/>
+                <ColumnDefinition Width="32"/>
+                <ColumnDefinition Width="32"/>
+                
+                <ColumnDefinition Width="32"/>
+                <ColumnDefinition Width="32"/>
+                <ColumnDefinition Width="32"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="BtDllName" Grid.Column="0" BorderThickness="0" Margin="0" BorderBrush="White" FontFamily="Segoe UI" FontSize="14" Background="#F5F5F5" FontWeight="Normal" Click="SwitchToDllName">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">DLL Name</TextBlock>
+                            <TextBlock>Shows all DLLs, ordered by filename. If two or more DLLs of the same name are found on your system, they will be highlighted.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Image Source="images\application_view_list.png" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="16" Margin="0 0 5 0"/>
+                    <AccessText>DLL _Name</AccessText>
+                </StackPanel>
+            </Button>
+            <Button Name="BtDllPath" Grid.Column="1" BorderThickness="0" Margin="0" BorderBrush="White" FontFamily="Segoe UI" FontSize="14"  Background="#F5F5F5" Click="SwitchToDllPath" >
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">DLL Path</TextBlock>
+                            <TextBlock>Shows all DLLs, ordered by their path.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Image Source="images\application_view_columns.png" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="16" Margin="0 0 5 0"/>
+                    <AccessText>DLL _Path</AccessText>
+                </StackPanel>
+            </Button>
+            <Button Name="BtExeName" Grid.Column="2" BorderThickness="0" Margin="0" BorderBrush="White" FontFamily="Segoe UI" FontSize="14" Background="#F5F5F5" Click="SwitchToExeName">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">EXE Name</TextBlock>
+                            <TextBlock>Shows all processes, ordered by their name.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Image Source="images\application_side_list.png" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="16" Margin="0 0 5 0"/>
+                    <AccessText>_EXE Name</AccessText>
+                </StackPanel>
+            </Button>
+            <Button Name="BtExePath" Grid.Column="3" BorderThickness="0" Margin="0" BorderBrush="White" FontFamily="Segoe UI" FontSize="14" Background="#F5F5F5" Click="SwitchToExePath">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">EXE Path</TextBlock>
+                            <TextBlock>Shows all processes, ordered by their path.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Image Source="images\application_side_tree.png" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="16" Margin="0 0 5 0"/>
+                    <AccessText>E_XE Path</AccessText>
+                </StackPanel>
+            </Button>
+            <StackPanel Grid.Column="4" Margin="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Image Source="images\find.png" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="16" Margin="0 0 5 0"/>
+                <Label VerticalAlignment="Center"  Target="{Binding ElementName=FindThisText}" Margin="0" Padding="0">
+                    <AccessText>_Filter:</AccessText>
+                </Label>
+            </StackPanel>
+            <TextBox Grid.Column="5" x:Name="FindThisText" Margin="3" TextChanged="FindThisText_TextChanged" />
+
+            <Button Grid.Column="6" Name="BtShowProperties" IsEnabled="false" BorderThickness="0" Margin="0" BorderBrush="White" FontFamily="Segoe UI" FontSize="14" Background="#F5F5F5" Click="OnShowProperties">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Properties</TextBlock>
+                            <TextBlock>Shows more information about the currently selected item.</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Image Source="images\database_gear.png" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="16" Margin="0 0 5 0"/>
+            </Button>
+            <Button Grid.Column="7" Name="BtRefresh" BorderThickness="0" Margin="0" BorderBrush="White" FontFamily="Segoe UI" FontSize="14" Background="#F5F5F5" Click="OnRefreshDisplay">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Refresh</TextBlock>
+                            <TextBlock>Refresh the currently displayed information. (Hint: is done automatically all 5 seconds anyway)</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Image Source="images\arrow_refresh.png" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="16" Margin="0 0 5 0"/>
+            </Button>
+            <Button Grid.Column="8" Name="BtSaveAsXML" BorderThickness="0" Margin="0" BorderBrush="White" FontFamily="Segoe UI" FontSize="14" Background="#F5F5F5" Click="OnSaveAsXML">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Save as XML</TextBlock>
+                            <TextBlock>Save all items as XML</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Image Source="images\database_save.png" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="16" Margin="0 0 5 0"/>
+            </Button>
+            <Button Grid.Column="9" Name="BtCopyToClipboard" BorderThickness="0" Margin="0" BorderBrush="White" FontFamily="Segoe UI" FontSize="14" Background="#F5F5F5" Click="OnCopyToClipboard">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Copy to clipboard</TextBlock>
+                            <TextBlock>Copy information on all items as XML to the clipboard</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Image Source="images\database_lightning.png" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="16" Margin="0 0 5 0"/>
+            </Button>
+
+            <Button Grid.Column="10" Name="BtShowDependencies" IsEnabled="false" BorderThickness="0" Margin="0" BorderBrush="White" FontFamily="Segoe UI" FontSize="14" Background="#F5F5F5" Click="OnShowDependencies">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Show Dependencies</TextBlock>
+                            <TextBlock>Bring up Dependency Viewer in current directory</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Image Source="images\table_gear.png" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="16" Margin="0 0 5 0"/>
+            </Button>
+            <Button Grid.Column="11" Name="BtShowExplorer" IsEnabled="false" BorderThickness="0" Margin="0" BorderBrush="White" FontFamily="Segoe UI" FontSize="14" Background="#F5F5F5" Click="OnShowExplorer">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Show Explorer</TextBlock>
+                            <TextBlock>Bring up Explorer.EXE in current directory</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Image Source="images\folder_find.png" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="16" Margin="0 0 5 0"/>
+            </Button>
+            <Button Grid.Column="12" Name="BtShowConsole" IsEnabled="false" BorderThickness="0" Margin="0" BorderBrush="White" FontFamily="Segoe UI" FontSize="14" Background="#F5F5F5" Click="OnShowConsole">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold">Show Console</TextBlock>
+                            <TextBlock>Bring up CMD.EXE in current directory</TextBlock>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Image Source="images\application_xp_terminal.png" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="16" Margin="0 0 5 0"/>
+            </Button>
+
+        </Grid>
+        <TreeView Grid.Row="1" 
+                  Name="MainTreeView" 
+                  PreviewMouseWheel="Zoom_MouseWheel" 
+                  FontFamily="Courier New"
+                  SelectedItemChanged="MainTreeView_SelectedItemChanged">
+            <TreeView.ItemTemplate>
+
+                <HierarchicalDataTemplate ItemsSource="{Binding Items}">
+                    <TextBlock Text="{Binding Name}" />
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="TreeViewItem">
+                    <!-- We have to select the item which is right-clicked on -->
+                    <EventSetter Event="TreeViewItem.PreviewMouseRightButtonDown" Handler="TreeViewItem_PreviewMouseRightButtonDown"/>
+                    <Setter Property="Foreground" Value="Black" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=IsRunning}" Value="True">
+                            <Setter Property="Foreground" Value="MediumBlue" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=IsDuplicate}" Value="True">
+                            <Setter Property="Foreground" Value="Red" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=IsDisabled}" Value="True">
+                            <Setter Property="Foreground" Value="Gray" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TreeView.ItemContainerStyle>
+
+        </TreeView>
+    </Grid>
+
+</Window>
