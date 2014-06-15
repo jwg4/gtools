@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pserv4", "pserv4\pserv4.csproj", "{956DAFC8-7C82-4AC8-B5E1-15C35D31EF1A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSharpTools", "GSharpTools\GSharpTools.csproj", "{20724C62-41C0-419D-832A-7F637AC41D4A}"
@@ -136,7 +134,6 @@ Global
 		{BED29196-D739-42B1-AC4B-E847237AA5EB}.Release|Win32.ActiveCfg = Release|Any CPU
 		{EEC09044-2D47-4F8D-AE0D-E75774FB6AAE}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{EEC09044-2D47-4F8D-AE0D-E75774FB6AAE}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{EEC09044-2D47-4F8D-AE0D-E75774FB6AAE}.Debug|Mixed Platforms.Build.0 = Debug|Win32
 		{EEC09044-2D47-4F8D-AE0D-E75774FB6AAE}.Debug|Win32.ActiveCfg = Debug|Win32
 		{EEC09044-2D47-4F8D-AE0D-E75774FB6AAE}.Debug|Win32.Build.0 = Debug|Win32
 		{EEC09044-2D47-4F8D-AE0D-E75774FB6AAE}.Release|Any CPU.ActiveCfg = Release|Win32
@@ -147,7 +144,6 @@ Global
 		{D5B19C92-E2ED-44F6-9E80-71B81E6959F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D5B19C92-E2ED-44F6-9E80-71B81E6959F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5B19C92-E2ED-44F6-9E80-71B81E6959F2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D5B19C92-E2ED-44F6-9E80-71B81E6959F2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{D5B19C92-E2ED-44F6-9E80-71B81E6959F2}.Debug|Win32.ActiveCfg = Debug|Any CPU
 		{D5B19C92-E2ED-44F6-9E80-71B81E6959F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5B19C92-E2ED-44F6-9E80-71B81E6959F2}.Release|Any CPU.Build.0 = Release|Any CPU
